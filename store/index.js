@@ -1,0 +1,30 @@
+import Vue from 'vue'
+import Vuex from 'vuex'
+
+Vue.use(Vuex)
+
+const store = new Vuex.Store({
+	state: {
+		/**
+		 * 是否需要强制登录
+		 */
+		forcedLogin: false,
+		hasLogin: false,
+		userName: "",
+		userInfo: {}
+	},
+	mutations: {
+		login(state, userInfo) {
+			state.userInfo = userInfo;
+			state.userName = userInfo.nickName || '新用户';
+			state.hasLogin = true;
+			console.log(state.userInfo)
+		},
+		logout(state) {
+			state.userName = "";
+			state.hasLogin = false;
+		}
+	}
+})
+
+export default store
